@@ -19,8 +19,39 @@
             padding: 0;
             margin: 0;
         }
+        
+        /* Estilos personalizados para hacer la leyenda más grande */
+        .leaflet-control-layers {
+            font-size: 16px !important; /* Aumenta el tamaño de la fuente */
+            line-height: 1.5 !important; /* Mejora el espaciado entre líneas */
+            width: auto !important; /* Ancho automático basado en contenido */
+            min-width: 200px !important; /* Ancho mínimo */
+            padding: 10px !important; /* Más relleno interno */
+        }
+        
+        /* Mejora los elementos dentro del control de capas */
+        .leaflet-control-layers label {
+            margin-bottom: 8px !important; /* Más espacio entre elementos */
+            display: flex !important;
+            align-items: center !important;
+        }
+        
+        .leaflet-control-layers input {
+            margin-right: 8px !important; /* Más espacio después de los checkboxes/radios */
+            transform: scale(1.2) !important; /* Hace los checkboxes/radios más grandes */
+        }
+        
+        /* Título del panel de capas */
+        .leaflet-control-layers-base,
+        .leaflet-control-layers-overlays {
+            margin-bottom: 10px !important;
+        }
+        
+        .leaflet-control-layers-overlays > label {
+            font-weight: bold !important;
+        }
         </style>
-        <title></title>
+        <title>Visor de Establecimientos Educativos</title>
     </head>
     <body>
         <div id="map">
@@ -244,9 +275,10 @@
             "Establecimientos Educativos": cluster_EE_SnTabAtributos_0
         };
         
-        // Usar el control de capas estándar de Leaflet en lugar de Layers Tree
+        // Usar el control de capas estándar de Leaflet con opciones personalizadas
         L.control.layers(baseMaps, overlayMaps, {
-            collapsed: false
+            collapsed: false,
+            position: 'topright'
         }).addTo(map);
         
         // También guardar la capa actual en la URL
